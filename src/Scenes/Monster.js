@@ -18,6 +18,14 @@ class Monster extends Phaser.Scene {
 
         this.leftLegX = 320;
         this.leftLegY = 430
+
+        this.smileX = 420;
+        this.smileY = 350;
+
+        this.fangX = 420;
+        this.fangY = 350;
+
+        this.
         
     }
 
@@ -66,27 +74,6 @@ class Monster extends Phaser.Scene {
         this.fKey.on('down', ()=> {
             console.log("The F key was pressed moved right");
         })
-
-        // this.aKey.on('down', ()=> {
-        //     console.log("The A key was pressed moved left");
-        //     my.sprite.body.x -= 10;
-        //     my.sprite.rightLeg.x -= 10;
-        //     my.sprite.leftLeg.x -= 10;
-        //     my.sprite.leftArm.x -= 10;
-        //     my.sprite.rightArm.x -= 10;
-        // })
-
-        // this.dKey.on('down', ()=> {
-        //     console.log("The D key was pressed moved right");
-        //     my.sprite.body.x += 10;
-        //     my.sprite.rightLeg.x += 10;
-        //     my.sprite.leftLeg.x += 10;
-        //     my.sprite.leftArm.x += 10;
-        //     my.sprite.rightArm.x += 10;
-        // })
-
-    
-
         
     }
 
