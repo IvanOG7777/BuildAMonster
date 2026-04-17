@@ -19,13 +19,20 @@ class Monster extends Phaser.Scene {
         this.leftLegX = 320;
         this.leftLegY = 430
 
-        this.smileX = 420;
-        this.smileY = 350;
+        this.smileX = 400;
+        this.smileY = 320;
 
-        this.fangX = 420;
-        this.fangY = 350;
+        this.fangX = 400;
+        this.fangY = 320;
 
-        this.
+        this.eyeX = 400;
+        this.eyeY = 250;
+
+        this.leftAntennaeX = 360;
+        this.leftAntennaeY = 220;
+
+        this.rightAntennaeX = 440;
+        this.rightAntennaeY = 220;
         
     }
 
@@ -51,13 +58,20 @@ class Monster extends Phaser.Scene {
         //
         // look in spritesheet_default.xml for the individual sprite names
         // You can also download the asset pack and look in the PNG/default folder.
-        my.sprite.body = this.add.sprite(this.bodyX, this.bodyY, "monsterParts", "body_greenD.png");
+        my.sprite.body = this.add.sprite(this.bodyX, this.bodyY, "monsterParts", "body_whiteD.png");
         my.sprite.leftLeg = this.add.sprite(this.leftLegX, this.leftLegY, "monsterParts", "leg_darkA.png");
         my.sprite.rightLeg = this.add.sprite(this.rightLegX, this.rightLegY, "monsterParts", "leg_darkA.png");
         my.sprite.rightArm = this.add.sprite(this.rightArmX, this.rightArmY, "monsterParts", "arm_blueA.png");
         my.sprite.leftArm = this.add.sprite(this.leftArmX, this.leftArmY, "monsterParts", "arm_blueC.png");
+        my.sprite.eye = this.add.sprite(this.eyeX, this.eyeY, "monsterParts", "eye_cute_light.png");
+        my.sprite.smile = this.add.sprite(this.smileX, this.smileY, "monsterParts", "mouth_closed_happy.png");
+        my.sprite.fang = this.add.sprite(this.fangX, this.fangY, "monsterParts", "mouthF.png");
+        my.sprite.leftAntennae = this.add.sprite(this.leftAntennaeX, this.leftAntennaeY, "monsterParts", "detail_yellow_antenna_small.png");
+        my.sprite.rightAntennae = this.add.sprite(this.rightAntennaeX, this.rightAntennaeY, "monsterParts", "detail_yellow_antenna_small.png");
         my.sprite.leftArm.flipX = true;
         my.sprite.leftLeg.flipX = true;
+        my.sprite.fang.visible = false;
+        my.sprite.rightAntennae.flipX = true;
 
 
         //Init the keys that will be pressed
@@ -67,12 +81,17 @@ class Monster extends Phaser.Scene {
         this.dKey = this.input.keyboard.addKey('D');
 
 
+        // event handling for smile and fangs
         this.sKey.on('down', ()=> {
             console.log("The S key was pressed moved left");
+            my.sprite.smile.visible = true;
+            my.sprite.fang.visible = false;
         })
 
         this.fKey.on('down', ()=> {
             console.log("The F key was pressed moved right");
+            my.sprite.smile.visible = false;
+            my.sprite.fang.visible = true;
         })
         
     }
@@ -80,12 +99,18 @@ class Monster extends Phaser.Scene {
     update() {
         let my = this.my;    // create an alias to this.my for readability
 
+        // Polling movement
         if (this.aKey.isDown) {
             my.sprite.body.x -= 2;
             my.sprite.rightLeg.x -= 2;
             my.sprite.leftLeg.x -= 2;
             my.sprite.leftArm.x -= 2;
             my.sprite.rightArm.x -= 2;
+            my.sprite.eye.x -= 2;
+            my.sprite.smile.x -= 2;
+            my.sprite.fang.x -= 2;
+            my.sprite.leftAntennae.x -= 2;
+            my.sprite.rightAntennae.x -= 2;
         }
 
         if (this.dKey.isDown) {
@@ -94,6 +119,11 @@ class Monster extends Phaser.Scene {
             my.sprite.leftLeg.x += 2;
             my.sprite.leftArm.x += 2;
             my.sprite.rightArm.x += 2;
+            my.sprite.eye.x += 2;
+            my.sprite.smile.x += 2;
+            my.sprite.fang.x += 2;
+            my.sprite.leftAntennae.x += 2;
+            my.sprite.rightAntennae.x += 2;
         }
     }
 
