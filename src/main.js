@@ -25,3 +25,5 @@ let config = {
 }
 
 const game = new Phaser.Game(config);
+
+//HELELELR
